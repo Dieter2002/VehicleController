@@ -1,0 +1,8 @@
+../Core/OwnLibrary/VL6180X.c:22:6:VL6180X_SimpleInit	1
+../Core/OwnLibrary/VL6180X.c:68:6:VL6180X_WriteReg	1
+../Core/OwnLibrary/VL6180X.c:73:9:VL6180X_ReadReg	1
+../Core/OwnLibrary/VL6180X.c:82:6:VL6180X_InitStateMachine	1
+../Core/OwnLibrary/VL6180X.c:91:6:VL6180X_IsReady	1
+../Core/OwnLibrary/VL6180X.c:96:9:VL6180X_GetResult	1
+../Core/OwnLibrary/VL6180X.c:103:6:VL6180X_Process	7
+../Core/OwnLibrary/VL6180X.c:143:9:VL6180X_ReadRange	3
