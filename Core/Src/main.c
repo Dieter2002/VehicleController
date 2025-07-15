@@ -317,7 +317,7 @@ static void MX_TIM3_Init(void)
   htim3.Instance = TIM3;
   htim3.Init.Prescaler = 8400-1;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 99;
+  htim3.Init.Period = 999;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
@@ -423,8 +423,7 @@ void TCA9548A_SelectChannel(uint8_t channel)
 
 void SendSerialData() {
 //	if (VL6180X_IsReady()) {
-		uint8_t afstand = VL6180X_ReadRange();
-		dataToMainProcessor.disMmSideFront = afstand;
+
 //	}
 
     dataToMainProcessor.voltageBattery = 25.0;
@@ -435,7 +434,7 @@ void SendSerialData() {
     dataToMainProcessor.disMmSideBack = 2;
 
     dataToMainProcessor.potMeterValue = 8;
-//    dataToMainProcessor.disMmSideFront = VL6180X_ReadRange();
+    dataToMainProcessor.disMmSideFront = VL6180X_ReadRange();
 
 //    dataToMainProcessor.flags = 0;
 //    dataToMainProcessor.flags |= (1 << 0);
@@ -475,7 +474,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	  sendDataFlag = true;
   }
   if (htim->Instance == TIM3){
-//	    VL6180X_Process();
+//		uint8_t afstand = VL6180X_ReadRange();
+//		dataToMainProcessor.disMmSideFront = afstand;
   }
 
 }

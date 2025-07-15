@@ -149,19 +149,21 @@ uint8_t VL6180X_ReadRange(void)
 
     uint32_t startTick = HAL_GetTick();
     while ((VL6180X_ReadReg(0x004F) & 0x07) != 0x04) {
-        if (HAL_GetTick() - startTick > 1000) {
-            return 255;
+        if (HAL_GetTick() - startTick > 100) {
+            return -1;
         }
     }
+
+
 
     uint8_t range = VL6180X_ReadReg(0x0062);  // RESULT__RANGE_VAL
 
     VL6180X_WriteReg(0x0015, 0x07);          // SYSTEM__INTERRUPT_CLEAR
 
-    uint8_t rangeStatus = VL6180X_ReadReg(0x0063);
-    if (rangeStatus != 0x00) {
-//        printf("Foutstatus: 0x%02X\r\n", rangeStatus);
-    }
+//    uint8_t rangeStatus = VL6180X_ReadReg(0x0063);
+//    if (rangeStatus != 0x00) {
+////        printf("Foutstatus: 0x%02X\r\n", rangeStatus);
+//    }
 
     return range;
 }
